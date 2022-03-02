@@ -10,3 +10,6 @@
 ## Authors: 
 * Damian Murawski
 * Sebastian Murawski
+* Paweł Zaręba
+* Daniel Nieznański
+* Bartosz Niewiadomski
