@@ -1,1 +1,15 @@
-# Jokerski-git jest najlepszym gitem na tej części ziemi
+# Application like pastebin
+## Table of Contents
+* [Technologies](#technologies)
+* [Authors](#authors)
+## Technologies
+* Django
+* PostgreSQL
+* React
+* GraphQL
+## Authors: 
+* Damian Murawski
+* Sebastian Murawski
+* Paweł Zaręba
+* Daniel Nieznański
+* Bartosz Niewiadomski
