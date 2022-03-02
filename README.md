@@ -4,7 +4,7 @@
 * [Authors](#authors)
 ## Technologies
 * Django
-* PostgresSQL
+* PostgreSQL
 * React
 * GraphQL
 ## Authors: 
