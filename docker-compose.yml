@@ -9,13 +9,16 @@ services:
         - POSTGRES_DB=postgres
         - POSTGRES_USER=postgres
         - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: pg_isready -U postgres
 
   backend:
     build: ./backend
     volumes:
       - ./backend:/app
     depends_on:
-      - database
+      database:
+        condition: service_healthy
 
   frontend:
     build: ./frontend
@@ -26,8 +29,8 @@ services:
     ports:
       - 80:80
 
-  nginx_backend:
-    build: ./nginx_backend
+  nginx_backend_server:
+    build: ./nginx_backend_server
     ports:
         - 8000:8000
     depends_on:
