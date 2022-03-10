@@ -22,7 +22,10 @@ services:
     depends_on:
       database:
         condition: service_healthy
-    command:  sh /app/start.sh
+    command: >
+            sh -c "python manage.py makemigrations &&
+            python manage.py migrate &&
+            gunicorn -b 0.0.0.0:8000 --worker-class=gevent --worker-connections=1000 --workers=5 backend.wsgi"
 
   frontend:
     build: ./frontend
