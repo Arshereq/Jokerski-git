@@ -2,6 +2,7 @@
 ## Table of Contents
 * [Technologies](#technologies)
 * [Authors](#authors)
+* [Commands](#commands)
 ## Technologies
 * Django
 * PostgreSQL
@@ -13,6 +14,6 @@
 * Paweł Zaręba
 * Daniel Nieznański
 * Bartosz Niewiadomski
-
-1.`pre-commit install`
-2. Build only frontend `docker-compose build --no-cache frontend` 
+## Commands: 
+1. Install precommit `pre-commit install`
+2. Build only frontend `docker-compose build --no-cache frontend`
