@@ -2,16 +2,11 @@ from graphene_django import DjangoObjectType
 import graphene
 from users.models import User
 
+
 class UserType(DjangoObjectType):
     class Meta:
         model = User
-        fields = (
-            'name',
-            'surname',
-            'login',
-            'password',
-            'email'
-        )
+        fields = ("name", "surname", "login", "password", "email")
 
 
 class UpdateUser(graphene.Mutation):
@@ -41,11 +36,11 @@ class UpdateUser(graphene.Mutation):
 
 
 class UserField(graphene.ObjectType):
-   name = graphene.String(required=True)
-   surname = graphene.String(required=True)
-   login = graphene.String(required=True)
-   password = graphene.String(required=True)
-   email = graphene.String(required=True)
+    name = graphene.String(required=True)
+    surname = graphene.String(required=True)
+    login = graphene.String(required=True)
+    password = graphene.String(required=True)
+    email = graphene.String(required=True)
 
 
 class CreateUser(graphene.Mutation):
@@ -74,7 +69,6 @@ class CreateUser(graphene.Mutation):
 class Query(graphene.ObjectType):
 
     users = graphene.List(UserType)
-
 
     def resolve_users(root, info, **kwargs):
         # Querying a list
