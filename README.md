@@ -13,3 +13,5 @@
 * Paweł Zaręba
 * Daniel Nieznański
 * Bartosz Niewiadomski
+
+1.pre-commit install
