@@ -14,4 +14,5 @@
 * Daniel Nieznański
 * Bartosz Niewiadomski
 
-1.pre-commit install
+1.`pre-commit install`
+2. Build only frontend `docker-compose build --no-cache frontend` 
