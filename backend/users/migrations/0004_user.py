@@ -8,19 +8,27 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('users', '0003_delete_user'),
+        ("users", "0003_delete_user"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='User',
+            name="User",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=30)),
-                ('surname', models.CharField(max_length=30)),
-                ('login', models.CharField(max_length=30)),
-                ('password', models.CharField(max_length=30)),
-                ('email', models.CharField(max_length=30)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=30)),
+                ("surname", models.CharField(max_length=30)),
+                ("login", models.CharField(max_length=30)),
+                ("password", models.CharField(max_length=30)),
+                ("email", models.CharField(max_length=30)),
             ],
         ),
     ]
