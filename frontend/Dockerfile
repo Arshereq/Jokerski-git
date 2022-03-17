@@ -5,7 +5,8 @@ COPY . ./
 RUN npm install
 
 ENV PATH="./node_modules/.bin:$PATH"
-
+RUN npm install --save-dev --save-exact prettier
+RUN npm install --save-dev cross-env eslint-config-airbnb eslint-config-prettier eslint-plugin-cypress eslint-plugin-prettier
 RUN npm run build
 
 FROM nginx:1.20.1-alpine
