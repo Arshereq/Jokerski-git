@@ -3,6 +3,7 @@
 * [Technologies](#technologies)
 * [Authors](#authors)
 * [Commands](#commands)
+* [Ports](#[ports])
 ## Technologies
 * Django
 * PostgreSQL
@@ -14,6 +15,19 @@
 * Paweł Zaręba
 * Daniel Nieznański
 * Bartosz Niewiadomski
+## Ports:
+* Frontend - `localhost:3000`
+* Backend -  `localhost:8000`
+* Backend-admin `localhost:8000/admin`
+* Backend-graphQL `localhost:8000/graphql`
+* Pgadmin - `localhost:5050`
 ## Commands: 
 1. Install precommit `pre-commit install`
-2. Build only frontend `docker-compose build --no-cache frontend`
+2. Build whole projects `docker-compose build` or `docker-compose up`
+3. Build only frontend `docker-compose build --no-cache frontend`
+4. Create superuser. Go to backend container `python manage.py createsuperuser`
+5. Migration. Go to backend container `python manage.py makemigrations <APP_NAME>` next `python manage.py migrate`
+## Pgadmin:
+1. DEFAULT LOGIN: `admin@admin.com`
+2. DEFAULT PASSWORD: `admin`
+<img src="https://user-images.githubusercontent.com/52125396/159588369-222c39bb-a65c-4903-9d83-d2937c8293b8.png" width="45%"></img> 
