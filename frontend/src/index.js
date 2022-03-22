@@ -17,36 +17,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-// const client = ...
-
-client
-  .query({
-    query: gql`
-      query GetRates {
-        rates(currency: "USD") {
-          currency
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
-
-  const EXCHANGE_RATES = gql`
-  query GetExchangeRates {
-    rates(currency: "USD") {
-      currency
-      rate
-    }
-  }
-`;
-
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>,
-  <ApolloProvider>
-    <App/>
-  </ApolloProvider>,
   document.getElementById('root')
 );
 
