@@ -6,6 +6,17 @@ import Create from "./components/Create";
 import Popular from "./components/Popular";
 import About from "./components/About";
 
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+
+const countiresQuery = gql` {
+  countries {
+    name
+    population
+    inNato
+  }
+}`
+
 function App() {
   return (
     <div>
