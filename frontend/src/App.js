@@ -8,6 +8,7 @@ import About from "./components/About";
 
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+import ExchangeRates from './components/ExchangeRates';
 
 const countiresQuery = gql` {
   countries {
@@ -82,6 +83,7 @@ function App() {
       <strong>PasteBin</strong> by <a href="https://github.com/Arshereq/Jokerski-git/">Jokerski Team</a>. 
     </p>
   </div>
+  <ExchangeRates/>
 </footer>
     </div>
   )
