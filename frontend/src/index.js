@@ -39,6 +39,7 @@ client
     }
   }
 `;
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

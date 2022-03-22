@@ -6,7 +6,6 @@ import Create from "./components/Create";
 import Popular from "./components/Popular";
 import About from "./components/About";
 
-import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import ExchangeRates from './components/ExchangeRates';
 
