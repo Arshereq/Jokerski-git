@@ -52,6 +52,10 @@ function App() {
               O nas
             </a>
 
+            <a class="navbar-item" href="/test-graphql">
+              TEST-GRAPHQL
+            </a> 
+
 
           </div>
 
@@ -75,6 +79,7 @@ function App() {
           <Route path="/Create" element={<Create />} />
           <Route path="/Popular" element={<Popular />} />
           <Route path="/About" element={<About />} />
+          <Route path="/test-graphql" element={<ExchangeRates/>} />
         </Routes>
       </Router>
       <footer class="footer">
@@ -83,7 +88,6 @@ function App() {
       <strong>PasteBin</strong> by <a href="https://github.com/Arshereq/Jokerski-git/">Jokerski Team</a>. 
     </p>
   </div>
-  <ExchangeRates/>
 </footer>
     </div>
   )
