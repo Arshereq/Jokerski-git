@@ -7,6 +7,8 @@ RUN npm install bulma
 RUN npm install react-router-dom --save
 RUN npm install graphql-react
 RUN npm install @apollo/client graphql
+RUN npm install --save @apollo/client apollo-link-rest graphql qs
+RUN npm install apollo-link-http
 RUN npm install
 
 ENV PATH="./node_modules/.bin:$PATH"

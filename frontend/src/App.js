@@ -1,6 +1,7 @@
 import 'bulma/css/bulma.min.css';
 import logo from './logo.svg'
 import {BrowserRouter as Router, Switch, Route, Link, Routes} from 'react-router-dom';
+
 import Home from "./components/Home";
 import Create from "./components/Create";
 import Popular from "./components/Popular";
@@ -8,6 +9,8 @@ import About from "./components/About";
 
 import gql from 'graphql-tag'
 import ExchangeRates from './components/ExchangeRates';
+import { client } from "./ApolloClient/client";
+import { ApolloProvider } from '@apollo/client';
 
 const countiresQuery = gql` {
   countries {
@@ -19,6 +22,7 @@ const countiresQuery = gql` {
 
 function App() {
   return (
+    <ApolloProvider client={client}>
     <div>
       <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -89,6 +93,7 @@ function App() {
   </div>
 </footer>
     </div>
+    </ApolloProvider>
   )
 }
 export default App;
