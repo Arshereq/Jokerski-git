@@ -2,6 +2,9 @@ FROM node:14-alpine AS builder
 
 WORKDIR /opt/web
 COPY . ./
+RUN npm install bootstrap@3
+RUN npm install bulma
+RUN npm install react-router-dom --save
 RUN npm install
 
 ENV PATH="./node_modules/.bin:$PATH"
