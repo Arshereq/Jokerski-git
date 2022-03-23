@@ -27,6 +27,7 @@
 3. Build only frontend `docker-compose build --no-cache frontend`
 4. Create superuser. Go to backend container `python manage.py createsuperuser`
 5. Migration. Go to backend container `python manage.py makemigrations <APP_NAME>` next `python manage.py migrate`
+6. Load Fixtures: `python manage.py loaddata <Name>.json`
 ## Pgadmin:
 1. DEFAULT LOGIN: `admin@admin.com`
 2. DEFAULT PASSWORD: `admin`
