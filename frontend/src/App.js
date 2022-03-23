@@ -43,6 +43,10 @@ function App() {
                 O nas
               </a>
 
+              <a class="navbar-item" href="/test-graphql">
+              TEST-GRAPHQL
+              </a> 
+
 
             </div>
 
@@ -68,6 +72,7 @@ function App() {
             <Route path="/About" element={<About />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/Register" element={<Register />} />
+            <Route path="/test-graphql" element={<ExchangeRates/>} />
           </Routes>
         </Router>
       </div>
