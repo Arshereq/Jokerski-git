@@ -8,22 +8,8 @@ import About from "./components/About";
 import SignUp from "./components/SignUp";
 import Register from "./components/Register";
 
-import gql from 'graphql-tag'
-import ExchangeRates from './components/ExchangeRates';
-import { client } from "./ApolloClient/client";
-import { ApolloProvider } from '@apollo/client';
-
-const countiresQuery = gql` {
-  countries {
-    name
-    population
-    inNato
-  }
-}`
-
 function App() {
   return (
-    <ApolloProvider client={client}>
     <div>
       <div>
         <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
@@ -98,7 +84,6 @@ function App() {
         </div>
       </section>
     </div>
-    </ApolloProvider>
   )
 }
 export default App;
