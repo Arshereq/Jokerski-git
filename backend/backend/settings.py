@@ -15,6 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+AUTH_USER_MODEL = "users.User"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -39,6 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "users",
     "graphene_django",
+    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
+    "graphql_auth",
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -129,4 +133,29 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-GRAPHENE = {"SCHEMA": "schema.schema"}
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+GRAPHENE = {
+    "SCHEMA": "schema.schema",
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
+}
+
+AUTHENTICATION_BACKENDS = [
+    "graphql_auth.backends.GraphQLAuthBackend",
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+GRAPHQL_JWT = {
+    "JWT_VERIFY_EXPIRATION": True,
+
+    # optional
+    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
+
+    "JWT_ALLOW_ANY_CLASSES": [
+        "graphql_auth.mutations.Register",
+        "graphql_auth.mutations.VerifyAccount",
+        "graphql_auth.mutations.ObtainJSONWebToken",
+    ],
+}
