@@ -7,6 +7,7 @@ import Popular from "./components/Popular";
 import About from "./components/About";
 import SignUp from "./components/SignUp";
 import Register from "./components/Register";
+import ExchangeRates from "./components/ExchangeRates";
 
 function App() {
   return (
