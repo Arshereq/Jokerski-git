@@ -15,7 +15,7 @@ class AuthQuery(schema.Query, UserQuery, MeQuery, graphene.ObjectType):
     pass
 
 
-class AuthMutations(AuthMutation, graphene.ObjectType):
+class AuthMutations(schema.Mutation,AuthMutation, graphene.ObjectType):
     pass
 
 
