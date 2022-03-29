@@ -1,3 +1,6 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ReminderPassword from './ReminderPassword';
+
 function SignUp() {
     return (
         <div class="container">
@@ -18,6 +21,9 @@ function SignUp() {
                     <button class="button is-success mb-6">
                         Zaloguj
                     </button>
+                    <a class="button is-success mb-6" href="/ReminderPassword">
+                        Przypomnij hasło
+                    </a>
                 </p>
             </div>
         </div>
