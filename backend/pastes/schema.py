@@ -1,5 +1,3 @@
-from matplotlib import textpath
-from matplotlib.pyplot import title
 import graphene
 from .models import Paste
 
@@ -39,20 +37,34 @@ class UpdatePaste(graphene.Mutation):
 
     class Arguments:
         id = graphene.Int(required=True)
-        title = graphene.String(required=True)
-        text = graphene.String(required=True)
-        visibility = graphene.String(required=True)
+        title = graphene.String()
+        text = graphene.String()
+        visibility = graphene.String()
+        expire_after = graphene.String()
 
-    def mutate(self,info,id,title,text,visibility):
+    def mutate(self,info,id,title,text,visibility,expired_after):
         paste = Paste.objects.get(id=id)
         paste.title = title
         paste.text = text
         paste.visibility = visibility
-
+        paste.expired_after = expired_after
         paste.save()
 
         return UpdatePaste(paste=paste)
 
+class DeletePaste(graphene.Mutation):
+    message = graphene.String()
+
+    class Arguments:
+        id = graphene.Int(required=True)
+
+    def mutate(self,info,id):
+        paste = Paste.objects.get(id=id)
+        paste.delete()
+
+        return DeletePaste(message=f"ID:{id} Deleted")
+
 class Mutation(graphene.ObjectType):
     create_paste = CreatePaste.Field()
     update_paste = UpdatePaste.Field()
+    delete_paste = DeletePaste.Field()
