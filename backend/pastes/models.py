@@ -7,7 +7,7 @@ class Pastes(models.Model):
     text = models.TextField(blank=False, verbose_name="Content of the paste")
     expire_after = models.DateField(blank=False, verbose_name="The paste's expiration time")
     visibility = models.BooleanField(default=True, verbose_name="Visibility of the paste")
-    author = models.ForeignKey(User,verbose_name="username", null=True)
+    author = models.ForeignKey(User,verbose_name="username", null=True, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f'{self.title}'
