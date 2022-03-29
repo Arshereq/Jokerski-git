@@ -2,7 +2,7 @@ import graphene
 
 from graphql_auth.schema import UserQuery, MeQuery
 from graphql_auth import mutations
-
+from pastes import schema
 
 class AuthMutation(graphene.ObjectType):
     register = mutations.Register.Field()
@@ -11,7 +11,7 @@ class AuthMutation(graphene.ObjectType):
     update_account = mutations.UpdateAccount.Field()
 
 
-class AuthQuery(UserQuery, MeQuery, graphene.ObjectType):
+class AuthQuery(schema.Query, UserQuery, MeQuery, graphene.ObjectType):
     pass
 
 
