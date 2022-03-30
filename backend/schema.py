@@ -1,13 +1,13 @@
 import graphene
+from pastes import schema
+from users.schema import AuthQuery, AuthMutations
 
-from backend.schema import AuthQuery, AuthMutations
 
-
-class Query(AuthQuery, graphene.ObjectType):
+class Query(schema.Query, AuthQuery, graphene.ObjectType):
     pass
 
 
-class Mutation(AuthMutations, graphene.ObjectType):
+class Mutation(schema.Mutation, AuthMutations, graphene.ObjectType):
     pass
 
 
