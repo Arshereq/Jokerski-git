@@ -5,9 +5,6 @@ function ReminderPassword(){
             <div class="field">
                 <label class="label">E-mail</label>
                 <input class="input" type="E-mail" placeholder="E-mail" />
-                <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                </span>
             </div>
             <div class="field">
                 <p class="control">

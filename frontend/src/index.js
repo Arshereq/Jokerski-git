@@ -12,6 +12,7 @@ import {
   gql
 } from "@apollo/client";
 
+
 const client = new ApolloClient({
   uri: 'http://localhost:8000/graphql',
   cache: new InMemoryCache()
@@ -22,7 +23,6 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>
-      
   </React.StrictMode>,
   document.getElementById('root')
 );
