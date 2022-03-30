@@ -21,7 +21,7 @@ function SignUp() {
                     <button class="button is-success mb-6">
                         Zaloguj
                     </button>
-                    <a class="button is-success mb-6" href="/ReminderPassword">
+                    <a class="button is-warning mb-6 ml-2" href="/ReminderPassword">
                         Przypomnij hasło
                     </a>
                 </p>
