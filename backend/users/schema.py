@@ -9,6 +9,7 @@ class AuthMutation(graphene.ObjectType):
     verify_account = mutations.VerifyAccount.Field()
     token_auth = mutations.ObtainJSONWebToken.Field()
     update_account = mutations.UpdateAccount.Field()
+    password_reset = mutations.PasswordReset.Field()
 
 
 class AuthQuery(UserQuery, MeQuery, graphene.ObjectType):
