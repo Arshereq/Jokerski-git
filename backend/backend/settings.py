@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "graphql_auth",
     'django_filters',
     "pastes",
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -157,6 +159,16 @@ GRAPHQL_JWT = {
     "JWT_ALLOW_ANY_CLASSES": [
         "graphql_auth.mutations.Register",
         "graphql_auth.mutations.VerifyAccount",
+        "graphql_auth.mutations.ResendActivationEmail",
+        "graphql_auth.mutations.SendPasswordResetEmail",
+        "graphql_auth.mutations.PasswordReset",
         "graphql_auth.mutations.ObtainJSONWebToken",
+        "graphql_auth.mutations.VerifyToken",
+        "graphql_auth.mutations.RefreshToken",
+        "graphql_auth.mutations.RevokeToken",
+        "graphql_auth.mutations.VerifySecondaryEmail",
     ],
 }
+CORS_ALLOWED_ORIGINS=[
+    "http://localhost:3000"
+]
