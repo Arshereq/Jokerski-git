@@ -7,7 +7,9 @@ import Popular from "./components/Popular";
 import About from "./components/About";
 import SignUp from "./components/SignUp";
 import Register from "./components/Register";
+import ReminderPassword from './components/ReminderPassword';
 import ExchangeRates from "./components/ExchangeRates";
+
 
 function App() {
   return (
@@ -74,6 +76,7 @@ function App() {
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/test-graphql" element={<ExchangeRates/>} />
+            <Route path="/ReminderPassword" element={<ReminderPassword/>}/>
           </Routes>
         </Router>
       </div>
