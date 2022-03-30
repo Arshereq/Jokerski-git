@@ -14,16 +14,16 @@ import {
 
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8000/graphql',
-  cache: new InMemoryCache()
+  uri: "http://localhost:8000/graphql",
+  cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
+  <ApolloProvider client={client}>
+    <React.StrictMode>
       <App />
-    </ApolloProvider>
-  </React.StrictMode>,
+    </React.StrictMode>
+  </ApolloProvider>,
   document.getElementById('root')
 );
 

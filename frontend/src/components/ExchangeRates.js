@@ -1,42 +1,25 @@
 import React from 'react';
-import {
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider,
-    useQuery,
-    gql
-  } from "@apollo/client";
-
-
-  const EXCHANGE_RATES = gql`
-  query GetExchangeRates {
-    rates(currency: "AUD") {
-      currency
-      rate
-    }
-    openExchangeRates @rest(type: "openExchangeRates", path: "/latest", endpoint: "openExchangeRate") {
-      rates
+import { useQuery, gql } from "@apollo/client";
+ 
+const ExchangeRates = () => {
+  const { loading, error, data } = useQuery(gql`
+  {
+    pastes{
+      id
+      title
+      text
+      author {
+        id
+      }
     }
   }
-`;
-
-function ExchangeRates() {
-    const { data, loading, error } = useQuery(EXCHANGE_RATES);
-
-    if (loading) {
-        return <div>loading</div>;
-      }
-    
-      if (error) {
-        return <div>{error}</div>;
-      }
-    
-      return data.rates.map(({ currency, rate }) => (
-        <div key={currency}>
-          <p>
-            {currency}: {rate}
-          </p>
-        </div>
-      ));
-  }
+  `);
+  if (loading) return <h1>Loading...</h1>
+  if (error) return <h1>Error...</h1>
+  return (
+    <div>
+      <h1>Hello Data</h1>
+    </div>
+  );
+};
 export default ExchangeRates
