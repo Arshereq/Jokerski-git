@@ -4,10 +4,17 @@ from users.models import User
 
 from graphene_django import DjangoObjectType
 
+
 class PasteType(DjangoObjectType):
     class Meta:
         model = Paste
         fields = ('id', 'title', 'text', 'expire_after', 'visibility', 'author')
+
+
+class UserType(DjangoObjectType):
+    class Meta:
+        model = User
+        fields = '__all__'
 
 
 class Query(graphene.ObjectType):
