@@ -34,5 +34,6 @@
 2. DEFAULT PASSWORD: `admin`
 <img src="https://user-images.githubusercontent.com/52125396/159588369-222c39bb-a65c-4903-9d83-d2937c8293b8.png" width="45%"></img> 
 ## RUN_TEST:
+!!!!IMPORTANT Tests must begin with the word `test`!!!!
 1. Go to cointainer with BACKEND
 2. Write `python manage.py test ` nazwa aplikacji (np: users)

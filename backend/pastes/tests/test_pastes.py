@@ -39,7 +39,7 @@ class TestApiPasteExpectResponse(TestCase):
             """
         self.client = Client(graphene.Schema(query=Query, mutation=Mutation))
 
-    def MutationCreatePasteTest(self) -> None:
+    def test_mutation_create_paste(self) -> None:
         result = self.client.execute(self.mutation)
         self.assertDictEqual(
             {
