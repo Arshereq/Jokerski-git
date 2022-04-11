@@ -1,13 +1,14 @@
-import json
-from graphene_django.utils.testing import GraphQLTestCase
+from django.test import TestCase
 from schema import *
 
-GRAPHQL_URL = "/graphql"
-class TestApiPasteExpectResponse(GraphQLTestCase):
-    def pastes_querry(self):
-        response = self.query(
-            '''
-            query pastes{
+import graphene
+from graphene.test import Client
+
+
+class TestApiPasteExpectResponse(TestCase):
+    def setUp(self) -> None:
+        self.query = """
+            query{
                 pastes{
                     id
                     title
@@ -15,56 +16,43 @@ class TestApiPasteExpectResponse(GraphQLTestCase):
                     author {
                     id
                     username
+                        }
                     }
                 }
-                }
-            ''',
-            op_name='myModel'
-        )
-
-        content = json.loads(response.content)
-        self.assertResponseNoErrors(response)
-
-    def TestQueryWithVariable(self):
-        response = self.query(
-            '''
-            query pastes($id: Int!){
-                pastes(id: $id) {
-                    id
-                    title
-                    text
-                }
-            }
-            ''',
-            op_name='pastes',
-            variables={'id': 1}
-        )
-
-        content = json.loads(response.content)
-
-        # This validates the status code and if you get errors
-        self.assertResponseNoErrors(response)
-
-
-    def TestApiMutationCreatePaste(self):
-            response = self.query(
-            '''
-            mutation myMutation($input: MyMutationInput!){
-                createPaste(input: $input) {
+            """
+        self.mutation = """
+            mutation{
+                createPaste(input: {
+                    title:"Testowy4",
+                    author:"root",
+                    text:"Testowy4",
+                    visibility:true,
+                    expireAfter:"34"
+                }) 
+                {
                     paste{
                         id
                         title
                     }
                 }
             }
-            ''',
-                op_name='createPaste',
-                input_data={
-                            "title":"Test Mutation 2 create",
-                            "author": "vat332",
-                            "text": "hdfhhdghdgdhdhgfhdgdhgf",
-                            "visibility": "True",
-                            "expired_after": "24234"
+            """
+        self.client = Client(graphene.Schema(query=Query, mutation=Mutation))
+
+    def MutationCreatePasteTest(self) -> None:
+        result = self.client.execute(self.mutation)
+        self.assertDictEqual(
+            {
+                {
+                    "data": {
+                        "createPaste": {
+                            "paste": {
+                                "id": "23",
+                                "title": "Testowy4"
                             }
-            )
-            self.assertResponseNoErrors(response)
+                        }
+                    }
+                }
+            },
+            result,
+        )
