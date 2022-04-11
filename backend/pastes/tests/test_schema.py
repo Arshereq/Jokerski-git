@@ -1,6 +1,6 @@
 import json
 from graphene_django.utils.testing import GraphQLTestCase
-from django.test import TestCase
+from django.test import SimpleTestCase
 from schema import *
 
 GRAPHQL_URL = "/graphql"
