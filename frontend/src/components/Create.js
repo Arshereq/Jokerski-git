@@ -57,7 +57,7 @@ function Create() {
                         <input
                             class="input"
                             type="text"
-                            placeholder="tytuł wklejki"
+                            placeholder="Nazwa autora"
                             value={formState.author}
                             onChange={(e) =>
                                 setFormState({
@@ -74,7 +74,7 @@ function Create() {
                         <input
                             class="input"
                             type="text"
-                            placeholder="Twoja nazwa"
+                            placeholder="Tytuł wklejki"
                             value={formState.title}
                             onChange={(e) =>
                                 setFormState({
@@ -108,7 +108,7 @@ function Create() {
                     <div class="control">
                         <textarea
                             class="textarea"
-                            placeholder="Wklejka"
+                            placeholder="Treść wklejki"
                             value={formState.text}
                             onChange={(e) =>
                                 setFormState({
@@ -120,10 +120,12 @@ function Create() {
                 </div>
 
                 <div class="field">
+                <label class="label">Widoczność wklejki</label>
+                <label class="radio">
                     <div class="control">
                         <input
-                            class="input"
-                            type="text"
+                            type="radio"
+                            name="formState"
                             value={formState.visibility}
                             onChange={(e) =>
                                 setFormState({
@@ -133,7 +135,9 @@ function Create() {
                             }
                             placeholder="visibility"
                         />
+                         - Prywatna
                     </div>
+                    </label>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
