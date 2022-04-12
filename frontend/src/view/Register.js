@@ -44,6 +44,7 @@ function Register() {
             onSubmit={(e) => {
                 e.preventDefault();
                 register();
+                window.location.reload();
             }}>
             <div class="container">
                 <h1 class="is-size-1 mt-4 has-text-centered">Rejestracja<br /><br /></h1>
