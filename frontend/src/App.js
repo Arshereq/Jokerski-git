@@ -85,7 +85,7 @@ function App() {
             <strong>PasteBin</strong>
             {' '}
             by
-            <a href="https://github.com/Arshereq/Jokerski-git/">Jokerski Team</a>
+            <a href="https://github.com/Arshereq/Jokerski-git/"> Jokerski Team</a>
             .
           </p>
         </div>

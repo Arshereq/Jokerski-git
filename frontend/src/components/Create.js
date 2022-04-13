@@ -87,10 +87,8 @@ function Create() {
                 </div>
                 <div class="field">
                     <label class="label">Usuń po - Kiedy twoja wklejka ma wygasnąć?</label>
-                    <div class="control">
-                        <input
-                            class="input"
-                            type="text"
+                    <div class="select is-fullwidth">
+                        <select
                             value={formState.expireAfter}
                             onChange={(e) =>
                                 setFormState({
@@ -99,7 +97,12 @@ function Create() {
                                 })
                             }
                             placeholder="expireAfter"
-                        />
+                        >
+                            <option value="dzien">Dzień</option>
+                            <option value="tydzien">Tydzień</option>
+                            <option value="rok">Rok</option>
+                            <option value="Nigdy">Nigdy</option>
+                            </select>
                     </div>
                 </div>
 
@@ -121,7 +124,7 @@ function Create() {
 
                 <div class="field">
                 <label class="label">Widoczność wklejki</label>
-                <label class="radio">
+                <label class="radio is-large">
                     <div class="control">
                         <input
                             type="radio"
