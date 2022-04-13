@@ -11,11 +11,11 @@
 * React
 * GraphQL
 ## Authors: 
-* Damian Murawski
-* Sebastian Murawski
-* Paweł Zaręba
-* Daniel Nieznański
-* Bartosz Niewiadomski
+* Damian Murawski (Frontend)
+* Sebastian Murawski (Backend)
+* Paweł Zaręba (Backend)
+* Daniel Nieznański (Frontend)
+* Bartosz Niewiadomski (Team Leader / Frontend)
 ## Ports:
 * Frontend - `localhost:3000`
 * Backend -  `localhost:8000`
