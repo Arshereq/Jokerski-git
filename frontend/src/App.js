@@ -8,15 +8,12 @@ import About from "./view/About";
 import SignUp from "./view/SignUp";
 import Register from "./view/Register";
 import ReminderPassword from './view/ReminderPassword';
-import { AuthProvider,AuthContext } from '../src/context/auth';
-import React,{useContext,useState} from 'react';
+import React from 'react';
+
 
 
 function App() {
-  const {user,logout}=useContext(AuthContext);
-
   return (
-    <AuthProvider>
       <div>
         <div>
           <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
@@ -49,8 +46,6 @@ function App() {
                 <a class="navbar-item" href="/About">
                   O nas
                 </a>
-
-
               </div>
 
               <div class="navbar-end">
@@ -87,7 +82,6 @@ function App() {
           </div>
         </section>
       </div>
-    </AuthProvider>
   )
 }
 export default App;
