@@ -1,8 +1,5 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ReminderPassword from './ReminderPassword';
 import { gql, useMutation } from '@apollo/client';
-import React, {useContext, useState } from 'react';
-import { AuthContext } from '../context/auth';
+import React, { useState } from 'react';
 
 const LOGIN = gql`
 mutation tokenAuth(
@@ -24,19 +21,13 @@ mutation tokenAuth(
 }
 `;
 
-
 function SignUp() {
-    const context = useContext(AuthContext)
     const [formState, setFormState] = useState({
         username: '',
         password: '',
     })
-
-
+    
     const [loginUser] = useMutation(LOGIN, {
-        update(_,{data:{login:userData}}){
-            context.login(userData);
-        },
         variables: {
             username: formState.username,
             password: formState.password,
