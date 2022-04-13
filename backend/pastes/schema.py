@@ -1,5 +1,5 @@
 import graphene
-from .models import Paste
+from .models import Paste, Vote
 from users.models import User
 
 from graphene_django import DjangoObjectType
@@ -8,7 +8,7 @@ from graphene_django import DjangoObjectType
 class PasteType(DjangoObjectType):
     class Meta:
         model = Paste
-        fields = ('id', 'title', 'text', 'expire_after', 'visibility', 'author')
+        # fields = ('id', 'title', 'text', 'expire_after', 'visibility', 'author')
 
 
 class UserType(DjangoObjectType):
@@ -17,14 +17,22 @@ class UserType(DjangoObjectType):
         fields = '__all__'
 
 
+class VoteType(DjangoObjectType):
+    class Meta:
+        model = Vote
+
+
 class Query(graphene.ObjectType):
     pastes = graphene.List(PasteType,id=graphene.Int())
+    votes = graphene.List(VoteType)
 
     def resolve_pastes(self,info,id=None):
         if id:
             return Paste.objects.filter(id=id)
         return Paste.objects.all()
 
+    def resolve_votes(self, info, **kwargs):
+        return Vote.objects.all()
 
 class CreatePaste(graphene.Mutation):
     paste = graphene.Field(PasteType)
@@ -37,12 +45,13 @@ class CreatePaste(graphene.Mutation):
         author = graphene.String(required=True)
 
     def mutate(self, info, title, text, expire_after, visibility, author):
+        user = info.context.user or None
         paste = Paste(
             title=title,
             text=text,
             expire_after=expire_after,
             visibility=visibility,
-            author=User.objects.get(username=author)
+            author=user
         )
 
         paste.save()
@@ -81,7 +90,33 @@ class DeletePaste(graphene.Mutation):
 
         return DeletePaste(message=f"ID:{id} Deleted")
 
+
+class CreateVote(graphene.Mutation):
+    user = graphene.Field(UserType)
+    paste = graphene.Field(PasteType)
+
+    class Arguments:
+        paste_id = graphene.Int()
+
+    def mutate(self, info, paste_id):
+        user = info.context.user
+        if user.is_anonymous:
+            raise Exception('You must be logged to vote!')
+
+        paste = Paste.objects.filter(id=paste_id).first()
+        if not paste:
+            raise Exception('Invalid Paste!')
+
+        Vote.objects.create(
+            user=user,
+            paste=paste,
+        )
+
+        return CreateVote(user=user, paste=paste)
+
+
 class Mutation(graphene.ObjectType):
     create_paste = CreatePaste.Field()
     update_paste = UpdatePaste.Field()
     delete_paste = DeletePaste.Field()
+    create_vote = CreateVote.Field()

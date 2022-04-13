@@ -4,17 +4,18 @@
 * [Authors](#authors)
 * [Commands](#commands)
 * [Ports](#[ports])
+* [RUN_TEST](#[RUN_TEST])
 ## Technologies
 * Django
 * PostgreSQL
 * React
 * GraphQL
 ## Authors: 
-* Damian Murawski
-* Sebastian Murawski
-* Paweł Zaręba
-* Daniel Nieznański
-* Bartosz Niewiadomski
+* Damian Murawski (Frontend)
+* Sebastian Murawski (Backend)
+* Paweł Zaręba (Backend)
+* Daniel Nieznański (Frontend)
+* Bartosz Niewiadomski (Team Leader / Frontend)
 ## Ports:
 * Frontend - `localhost:3000`
 * Backend -  `localhost:8000`
@@ -32,3 +33,7 @@
 1. DEFAULT LOGIN: `admin@admin.com`
 2. DEFAULT PASSWORD: `admin`
 <img src="https://user-images.githubusercontent.com/52125396/159588369-222c39bb-a65c-4903-9d83-d2937c8293b8.png" width="45%"></img> 
+## RUN_TEST:
+!!!!  IMPORTANT Tests must begin with the word `test`  !!!!
+1. Go to cointainer with BACKEND
+2. Write `python manage.py test ` nazwa aplikacji (np: users)

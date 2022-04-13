@@ -14,6 +14,9 @@ class Paste(models.Model):
         return f"{self.id}--{self.title}"
     
 
+class Vote(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    paste = models.ForeignKey('pastes.Paste', related_name='votes', on_delete=models.CASCADE)
 # class ExpireChoices(models.TextChoices):
 #     NEVER = 'NEVER', _('never')
 #     HOUR = 'HOUR', _('1 hour')
