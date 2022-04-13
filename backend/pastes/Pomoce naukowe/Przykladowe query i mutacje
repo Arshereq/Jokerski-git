@@ -1,0 +1,40 @@
+Query do sprawdzania Votow
+{
+  pastes{
+    id
+    title
+    text
+    visibility
+    expireAfter
+    __typename
+    author{
+      id
+      username
+      email
+    }
+    votes{
+      id
+      user{
+        id
+        username
+      }
+    }
+    }
+}
+
+Mutacja do dodawania vote
+
+mutation {
+  createVote(pasteId: 1){
+    user{
+      id
+      username
+      email
+    }
+    paste{
+      id
+      text
+      title
+    }
+  }
+}
