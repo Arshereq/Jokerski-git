@@ -6,6 +6,7 @@ query pastes{
     id
     title
     text
+    expireAfter
     author {
       id
       username
@@ -29,22 +30,21 @@ function Popular() {
     return (
         <div class="container has-text-centered ">
             <h1 class="is-size-1 m-4 has-text-centered">Popularne Wklejki</h1>
-            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth m-6">
+            <table class="table is-bordered is-striped is-fullwidth is-narrow is-hoverable m-6">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Lp.</th>
                         <th>Tytuł</th>
                         <th>Autor</th>
                         <th>Zawrtość</th>
-                        <th>Widoczność</th>
                         <th>Wygaśnie</th>
-                        <th>Usuwanie</th>
+                        <th>Usuń</th>
                     </tr>
                 </thead>
                 {data?.pastes?.map((item, i) => (
                     <tbody class="has-text-weight-light">
                         <th>
-                            {i + 1}.  {item?.id}
+                            {i + 1}.
                         </th>
                         <th>
                             {item?.title}
@@ -54,9 +54,6 @@ function Popular() {
                         </th>
                         <th>
                             {item?.text}
-                        </th>
-                        <th>
-                            {item?.visibility}
                         </th>
                         <th>
                             {item?.expireAfter}

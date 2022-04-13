@@ -1,65 +1,64 @@
 import 'bulma/css/bulma.min.css';
-import logo from './logo.svg'
+import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from "./components/Home";
-import Create from "./components/Create";
-import Popular from "./components/Popular";
-import About from "./components/About";
-import SignUp from "./components/SignUp";
-import Register from "./components/Register";
-import ReminderPassword from './components/ReminderPassword';
-import ExchangeRates from "./components/ExchangeRates";
+import Home from "./view/Home";
+import Create from "./view/Create";
+import Popular from "./view/Popular";
+import About from "./view/About";
+import SignUp from "./view/SignUp";
+import Register from "./view/Register";
+import ReminderPassword from './view/ReminderPassword';
+// import ExchangeRates from "./view/ExchangeRates";
 
 
 function App() {
   return (
     <div>
       <div>
-        <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="https://emplocity.com/pl/">
-              <img src={logo} width="112" height="28" />
+        <nav className="navbar has-background-light" role="navigation" aria-label="main navigation">
+          <div className="navbar-brand">
+            <a className="navbar-item" href="https://emplocity.com/pl/">
+              <img src={logo} width="112" height="28" alt="" />
             </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
+            <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
             </a>
           </div>
 
-          <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item" href="/Home">
+          <div id="navbarBasicExample" className="navbar-menu">
+            <div className="navbar-start">
+              <a className="navbar-item" href="/Home">
                 Strona główna
               </a>
 
-              <a class="navbar-item" href="/Create">
+              <a className="navbar-item" href="/Create">
                 Utwórz wklejkę
               </a>
 
-              <a class="navbar-item" href="/Popular">
+              <a className="navbar-item" href="/Popular">
                 Popularne wklejki
               </a>
 
-              <a class="navbar-item" href="/About">
+              <a className="navbar-item" href="/About">
                 O nas
               </a>
 
-              <a class="navbar-item" href="/test-graphql">
+              {/* <a class="navbar-item" href="/test-graphql">
               TEST-GRAPHQL
-              </a> 
-
+              </a>  */}
 
             </div>
 
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <a class="button is-primary" href="/Register">
+            <div className="navbar-end">
+              <div className="navbar-item">
+                <div className="buttons">
+                  <a className="button is-primary" href="/Register">
                     <strong>Zarejestruj się</strong>
                   </a>
-                  <a class="button is-light" href="/SignUp">
+                  <a className="button is-light" href="/SignUp">
                     Zaloguj się
                   </a>
                 </div>
@@ -75,19 +74,23 @@ function App() {
             <Route path="/About" element={<About />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/Register" element={<Register />} />
-            <Route path="/test-graphql" element={<ExchangeRates/>} />
-            <Route path="/ReminderPassword" element={<ReminderPassword/>}/>
+            {/* <Route path="/test-graphql" element={<ExchangeRates/>} /> */}
+            <Route path="/ReminderPassword" element={<ReminderPassword />} />
           </Routes>
         </Router>
       </div>
-      <section class="footer">
-        <div class="content has-text-centered">
+      <footer className="footer">
+        <div className="content has-text-centered">
           <p>
-            <strong>PasteBin</strong> by <a href="https://github.com/Arshereq/Jokerski-git/">Jokerski Team</a>.
+            <strong>PasteBin</strong>
+            {' '}
+            by
+            <a href="https://github.com/Arshereq/Jokerski-git/"> Jokerski Team</a>
+            .
           </p>
         </div>
-      </section>
+      </footer>
     </div>
-  )
+  );
 }
 export default App;
