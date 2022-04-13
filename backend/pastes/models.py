@@ -9,6 +9,7 @@ class Paste(models.Model):
     expire_after = models.DateTimeField(auto_now_add=True, blank=False, verbose_name="The paste's expiration time")
     visibility = models.BooleanField(default=True, verbose_name="Visibility of the paste")
     author = models.ForeignKey(User,verbose_name="username", null=True, on_delete=models.CASCADE)
+    image = models.ImageField(null=True, blank=True, upload_to='images/')
 
     def __str__(self) -> str:
         return f"{self.id}--{self.title}"
