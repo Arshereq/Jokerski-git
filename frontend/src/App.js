@@ -1,5 +1,5 @@
 import 'bulma/css/bulma.min.css';
-import logo from './logo.svg'
+import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./view/Home";
 import Create from "./view/Create";
@@ -8,7 +8,6 @@ import About from "./view/About";
 import SignUp from "./view/SignUp";
 import Register from "./view/Register";
 import ReminderPassword from './view/ReminderPassword';
-import ExchangeRates from "./view/ExchangeRates";
 import { AuthProvider,AuthContext } from '../src/context/auth';
 import React,{useContext,useState} from 'react';
 
@@ -51,10 +50,6 @@ function App() {
                   O nas
                 </a>
 
-                <a class="navbar-item" href="/test-graphql">
-                  TEST-GRAPHQL
-                </a>
-
 
               </div>
 
@@ -80,7 +75,6 @@ function App() {
               <Route path="/About" element={<About />} />
               <Route path="/SignUp" element={<SignUp />} />
               <Route path="/Register" element={<Register />} />
-              <Route path="/test-graphql" element={<ExchangeRates />} />
               <Route path="/ReminderPassword" element={<ReminderPassword />} />
             </Routes>
           </Router>
