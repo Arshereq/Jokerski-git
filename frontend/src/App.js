@@ -1,15 +1,15 @@
 import 'bulma/css/bulma.min.css';
 import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import React from 'react';
-import Home from './components/Home';
-import Create from './components/Create';
-import Popular from './components/Popular';
-import About from './components/About';
-import SignUp from './components/SignUp';
-import Register from './components/Register';
-import ReminderPassword from './components/ReminderPassword';
-import ExchangeRates from './components/ExchangeRates';
+import Home from "./view/Home";
+import Create from "./view/Create";
+import Popular from "./view/Popular";
+import About from "./view/About";
+import SignUp from "./view/SignUp";
+import Register from "./view/Register";
+import ReminderPassword from './view/ReminderPassword';
+// import ExchangeRates from "./view/ExchangeRates";
+
 
 function App() {
   return (
