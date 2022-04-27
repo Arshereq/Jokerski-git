@@ -3,21 +3,17 @@ import React, { useState } from "react";
 import { LOGIN } from "../query/user/LOGIN";
 
 function SignUp() {
-  const [formState, setFormState] =
-    useState({
-      username: "",
-      password: "",
-    });
+  const [formState, setFormState] = useState({
+    username: "",
+    password: "",
+  });
 
-  const [loginUser] = useMutation(
-    LOGIN,
-    {
-      variables: {
-        username: formState.username,
-        password: formState.password,
-      },
-    }
-  );
+  const [loginUser] = useMutation(LOGIN, {
+    variables: {
+      username: formState.username,
+      password: formState.password,
+    },
+  });
 
   return (
     <form
@@ -33,9 +29,7 @@ function SignUp() {
           <br />
         </h1>
         <div class="field">
-          <label class="label">
-            Login
-          </label>
+          <label class="label">Login</label>
           <input
             class="input"
             type="login"
@@ -44,8 +38,7 @@ function SignUp() {
             onChange={(e) =>
               setFormState({
                 ...formState,
-                username:
-                  e.target.value,
+                username: e.target.value,
               })
             }
           />
@@ -54,9 +47,7 @@ function SignUp() {
           </span>
         </div>
         <div class="field">
-          <label class="label">
-            Hasło
-          </label>
+          <label class="label">Hasło</label>
           <input
             class="input"
             type="password"
@@ -65,24 +56,17 @@ function SignUp() {
             onChange={(e) =>
               setFormState({
                 ...formState,
-                password:
-                  e.target.value,
+                password: e.target.value,
               })
             }
           />
         </div>
         <div class="field">
           <p class="control">
-            <button
-              type="submit"
-              class="button is-success mb-6"
-            >
+            <button type="submit" class="button is-success mb-6">
               Zaloguj
             </button>
-            <a
-              class="button is-warning mb-6 ml-2"
-              href="/ReminderPassword"
-            >
+            <a class="button is-warning mb-6 ml-2" href="/ReminderPassword">
               Przypomnij hasło
             </a>
           </p>
