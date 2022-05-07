@@ -1,6 +1,6 @@
 import "bulma/css/bulma.min.css";
 import logo from "./logo.svg";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from "react-router-dom";
 import Home from "./view/Home";
 import Create from "./view/Create";
 import Popular from "./view/Popular";
@@ -9,6 +9,7 @@ import SignUp from "./view/SignUp";
 import Register from "./view/Register";
 import ReminderPassword from "./view/ReminderPassword";
 import React from "react";
+import { AUTH_TOKEN } from '../src/constants/constants';
 
 function toggleBurger() {
   const burgerIcon = document.querySelector("#burger");
@@ -20,6 +21,8 @@ function toggleBurger() {
 }
 
 function App() {
+  const navigate = useNavigate();
+  const authtoken = localStorage.getItem(AUTH_TOKEN);
   return (
     <div>
       <div>
@@ -55,16 +58,34 @@ function App() {
             </div>
 
             <div class="navbar-end">
-              <div class="navbar-item">
+              {authtoken && (
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary" href="/Register">
+                      <strong>Zarejestruj się</strong>
+                    </a>
+                    <a class="button is-light" href="/SignUp">
+                      Zaloguj się
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div class="navbar-end">
+              {authtoken ? (<div class="navbar-item">
                 <div class="buttons">
-                  <a class="button is-primary" href="/Register">
-                    <strong>Zarejestruj się</strong>
-                  </a>
-                  <a class="button is-light" href="/SignUp">
-                    Zaloguj się
+                  <a class="button is-primary" onClick={() => {
+                    localStorage.removeItem(AUTH_TOKEN);
+                    navigate(`/`);
+                  }}>
+                    <strong>Wyloguj</strong>
                   </a>
                 </div>
-              </div>
+              </div>) : (
+                <a class="button is-light" href="/SignUp">
+                  Zaloguj się
+                </a>
+              )}
             </div>
           </div>
         </nav>

@@ -1,8 +1,12 @@
 import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
+import { AUTH_TOKEN } from "../constants/constants";
 import { LOGIN } from "../query/user/LOGIN";
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const navigate=useNavigate();
+
   const [formState, setFormState] = useState({
     username: "",
     password: "",
@@ -13,6 +17,10 @@ function SignUp() {
       username: formState.username,
       password: formState.password,
     },
+    onCompleted: ({loginUser})=>{
+      localStorage.setItem(AUTH_TOKEN,loginUser.token);
+      navigate('/');
+    }
   });
 
   return (
