@@ -56,21 +56,6 @@ function App() {
                 O nas
               </a>
             </div>
-
-            <div class="navbar-end">
-              {authtoken && (
-                <div class="navbar-item">
-                  <div class="buttons">
-                    <a class="button is-primary" href="/Register">
-                      <strong>Zarejestruj się</strong>
-                    </a>
-                    <a class="button is-light" href="/SignUp">
-                      Zaloguj się
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
             <div class="navbar-end">
               {authtoken ? (<div class="navbar-item">
                 <div class="buttons">
@@ -82,9 +67,16 @@ function App() {
                   </a>
                 </div>
               </div>) : (
-                <a class="button is-light" href="/SignUp">
-                  Zaloguj się
-                </a>
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary" href="/Register">
+                      <strong>Zarejestruj się</strong>
+                    </a>
+                    <a class="button is-light" href="/SignUp">
+                      Zaloguj się
+                    </a>
+                  </div>
+                </div>
               )}
             </div>
           </div>
