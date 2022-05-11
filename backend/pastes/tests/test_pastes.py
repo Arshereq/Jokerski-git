@@ -11,19 +11,6 @@ class GraphQLTestCase(TestCase):
         self._client = Client()
 
     def query(self, query: str, op_name: str = None, input: dict = None):
-        '''
-        Args:
-            query (string) - GraphQL query to run
-            op_name (string) - If the query is a mutation or named query, you must
-                               supply the op_name.  For annon queries ("{ ... }"),
-                               should be None (default).
-            input (dict) - If provided, the $input variable in GraphQL will be set
-                           to this value
-
-        Returns:
-            dict, response from graphql endpoint.  The response has the "data" key.
-                  It will have the "error" key if any error happened.
-        '''
         body = {'query': query}
         if op_name:
             body['operation_name'] = op_name
@@ -36,10 +23,6 @@ class GraphQLTestCase(TestCase):
         return jresp
 
     def assertResponseNoErrors(self, resp: dict, expected: dict):
-        '''
-        Assert that the resp (as retuened from query) has the data from
-        expected
-        '''
         self.assertNotIn('errors', resp, 'Response had errors')
         self.assertEqual(resp['data'], expected, 'Response has correct data')
 
@@ -84,3 +67,42 @@ class GraphQLTestCase(TestCase):
         ''',
         )
         self.assertResponseNoErrors(resp, {'createPaste': {'success': True}})
+
+    def test_update_paste(self):
+        resp = self.query(
+        '''
+        mutation {
+            createPaste(
+                title: "Testing title Test 2112 update",
+                text: "Test update",
+                visibility: false,
+                expireAfter:"25",
+                author:"vat332"
+            ){
+                paste{
+                    id
+                    title
+                }
+            }
+        }
+        ''',
+        )
+        self.assertResponseNoErrors(resp, {'updatePaste': {'success': True}})
+
+    def test_delete_paste(self):
+        resp = self.query(
+        '''
+        mutation 
+        {
+            deletePaste($id: Int!)
+            {
+                deletePaste(id: $id)
+                {
+                    
+                }
+            }
+        }
+        ''',
+        )
+        self.assertResponseNoErrors(resp, {'deletePaste': {'success': True}})
+
