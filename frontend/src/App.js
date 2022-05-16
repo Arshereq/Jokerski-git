@@ -22,14 +22,12 @@ function toggleBurger() {
 }
 
 function App() {
-  //const [token, setToken] = useState(null)
-  // const authtoken = localStorage.getItem(token)
-  // console.log(authtoken)
   const [tokenAuth,setTokenAuth] = useState(false);
 
   const afterSignup = (tok)=> {
-		var token = localStorage.getItem('result.data.tokenAuth.token');
-    if(token!==null){
+		const token = localStorage.getItem('result.data.tokenAuth.token');
+    const token_auth=JSON.parse(token);
+    if(token_auth!==null){
       setTokenAuth(true);
     }
 	}

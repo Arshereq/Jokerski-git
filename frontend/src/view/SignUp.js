@@ -21,9 +21,7 @@ function SignUp(props) {
 
   useEffect(()=>{
     if(result.data){
-      // const token = result.data.tokenAuth.token
-      // setToken(token)
-      localStorage.setItem('result.data.tokenAuth.token',result.data.tokenAuth.token)
+      localStorage.setItem('result.data.tokenAuth.token',JSON.stringify(result.data.tokenAuth.token))
       const tok = result.data.tokenAuth.token
       console.log(tok)
       props.afterLogin(tok);
