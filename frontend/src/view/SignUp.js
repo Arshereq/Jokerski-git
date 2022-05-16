@@ -1,27 +1,34 @@
 import { useMutation } from "@apollo/client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AUTH_TOKEN } from "../constants/constants";
 import { LOGIN } from "../query/user/LOGIN";
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from "react-router-dom";
 
-function SignUp() {
-  const navigate=useNavigate();
+function SignUp(props) {
 
   const [formState, setFormState] = useState({
     username: "",
     password: "",
   });
 
-  const [loginUser] = useMutation(LOGIN, {
+  const [loginUser,result] = useMutation(LOGIN, {
     variables: {
       username: formState.username,
       password: formState.password,
-    },
-    onCompleted: ({loginUser})=>{
-      localStorage.setItem(AUTH_TOKEN,loginUser.token);
-      navigate('/');
     }
   });
+
+
+  useEffect(()=>{
+    if(result.data){
+      // const token = result.data.tokenAuth.token
+      // setToken(token)
+      localStorage.setItem('result.data.tokenAuth.token',result.data.tokenAuth.token)
+      const tok = result.data.tokenAuth.token
+      console.log(tok)
+      props.afterLogin(tok);
+    }
+  })
 
   return (
     <form

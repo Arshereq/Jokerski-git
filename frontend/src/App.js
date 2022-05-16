@@ -8,8 +8,9 @@ import About from "./view/About";
 import SignUp from "./view/SignUp";
 import Register from "./view/Register";
 import ReminderPassword from "./view/ReminderPassword";
-import React from "react";
 import { AUTH_TOKEN } from '../src/constants/constants';
+import React, { useState, useEffect } from "react";
+
 
 function toggleBurger() {
   const burgerIcon = document.querySelector("#burger");
@@ -21,8 +22,17 @@ function toggleBurger() {
 }
 
 function App() {
-  const navigate = useNavigate();
-  const authtoken = localStorage.getItem(AUTH_TOKEN);
+  //const [token, setToken] = useState(null)
+  // const authtoken = localStorage.getItem(token)
+  // console.log(authtoken)
+  const [tokenAuth,setTokenAuth] = useState(false);
+
+  const afterSignup = (tok)=> {
+		var token = localStorage.getItem('result.data.tokenAuth.token');
+    if(token!==null){
+      setTokenAuth(true);
+    }
+	}
   return (
     <div>
       <div>
@@ -57,16 +67,17 @@ function App() {
               </a>
             </div>
             <div class="navbar-end">
-              {authtoken ? (<div class="navbar-item">
-                <div class="buttons">
-                  <a class="button is-primary" onClick={() => {
-                    localStorage.removeItem(AUTH_TOKEN);
-                    navigate(`/`);
-                  }}>
-                    <strong>Wyloguj</strong>
-                  </a>
+              {tokenAuth ? (
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary" onClick={()=>{
+                      localStorage.removeItem('result.data.tokenAuth.token');
+                    }}>
+                      <strong>Wyloguj</strong>
+                    </a>
+                  </div>
                 </div>
-              </div>) : (
+              ) : (
                 <div class="navbar-item">
                   <div class="buttons">
                     <a class="button is-primary" href="/Register">
@@ -87,7 +98,7 @@ function App() {
             <Route path="/Create" element={<Create />} />
             <Route path="/Popular" element={<Popular />} />
             <Route path="/About" element={<About />} />
-            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/SignUp" element={<SignUp afterLogin={afterSignup} />}/>
             <Route path="/Register" element={<Register />} />
             <Route path="/ReminderPassword" element={<ReminderPassword />} />
           </Routes>
