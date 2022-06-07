@@ -1,19 +1,30 @@
 import { useMutation } from "@apollo/client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LOGIN } from "../query/user/LOGIN";
 
-function SignUp() {
+
+function SignUp(props) {
+
   const [formState, setFormState] = useState({
     username: "",
     password: "",
   });
 
-  const [loginUser] = useMutation(LOGIN, {
+  const [loginUser,result] = useMutation(LOGIN, {
     variables: {
       username: formState.username,
       password: formState.password,
-    },
+    }
   });
+
+
+  useEffect(()=>{
+    if(result?.data?.tokenAuth?.token){
+      localStorage.setItem('token',result.data.tokenAuth.token)
+      const tok = result.data.tokenAuth.token
+      props.setToken(tok);
+    }
+  })
 
   return (
     <form
