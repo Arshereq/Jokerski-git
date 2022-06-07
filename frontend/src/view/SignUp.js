@@ -1,8 +1,7 @@
 import { useMutation } from "@apollo/client";
 import React, { useState, useEffect } from "react";
-import { AUTH_TOKEN } from "../constants/constants";
 import { LOGIN } from "../query/user/LOGIN";
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from "react-router-dom";
+
 
 function SignUp(props) {
 
@@ -20,11 +19,10 @@ function SignUp(props) {
 
 
   useEffect(()=>{
-    if(result.data){
-      localStorage.setItem('result.data.tokenAuth.token',JSON.stringify(result.data.tokenAuth.token))
+    if(result?.data?.tokenAuth?.token){
+      localStorage.setItem('token',result.data.tokenAuth.token)
       const tok = result.data.tokenAuth.token
-      console.log(tok)
-      props.afterLogin(tok);
+      props.setToken(tok);
     }
   })
 
